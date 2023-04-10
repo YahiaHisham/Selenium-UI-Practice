@@ -18,11 +18,10 @@ public class SignupLoginPage extends PageBase {
     }
 
     public SignupLoginPage setSignupEmail(){
-        setElementText(signUpEmailField,"testmail@m.com");
+        setElementText(signUpEmailField,"testmaaaaaail@m.com");
         return this;
     }
-    public SignupLoginPage clickOnSignupButton(){
+    public void clickOnSignupButton(){
         clickOnElement(signUpBtn);
-        return this;
     }
 }

@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -9,7 +10,7 @@ import pages.SignupPage;
 
 import java.time.Duration;
 
-public class TC_01_UserRegistrationTest {
+public class TC01_UserRegistrationTest {
     public static WebDriver driver;
 
     @Test
@@ -23,14 +24,19 @@ public class TC_01_UserRegistrationTest {
         new SignupPage(driver)
                 .setTitleToMr()
                 .setPassword()
+                .setDayOfBirth()
+                .setMonthOfBirth()
+                .setYearOfBirth()
                 .setFirstName()
                 .setLastName()
                 .setAddress()
+                .setCountry()
                 .setState()
                 .setCity()
                 .setZipCode()
                 .setMobileNumber()
                 .clickOnSignUpButton();
+        Assert.assertEquals(new SignupPage(driver).getAccountStatusText(), "ACCOUNT CREATED!");
     }
 
     @BeforeTest
@@ -44,6 +50,6 @@ public class TC_01_UserRegistrationTest {
 
     @AfterTest
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
     }
 }
