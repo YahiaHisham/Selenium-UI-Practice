@@ -5,6 +5,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.SignupLoginPage;
+import pages.SignupPage;
 
 import java.time.Duration;
 
@@ -19,6 +20,17 @@ public class TC_01_UserRegistrationTest {
                 .setSignupName()
                 .setSignupEmail()
                 .clickOnSignupButton();
+        new SignupPage(driver)
+                .setTitleToMr()
+                .setPassword()
+                .setFirstName()
+                .setLastName()
+                .setAddress()
+                .setState()
+                .setCity()
+                .setZipCode()
+                .setMobileNumber()
+                .clickOnSignUpButton();
     }
 
     @BeforeTest
@@ -32,6 +44,6 @@ public class TC_01_UserRegistrationTest {
 
     @AfterTest
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 }
