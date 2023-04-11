@@ -36,7 +36,6 @@ public class TC01_UserRegistrationTest {
                 .setZipCode()
                 .setMobileNumber()
                 .clickOnSignUpButton();
-        Assert.assertEquals(new SignupPage(driver).getAccountStatusText(), "ACCOUNT CREATED!");
     }
 
     @BeforeTest

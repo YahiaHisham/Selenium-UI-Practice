@@ -12,16 +12,17 @@ public class SignupLoginPage extends PageBase {
         super(driver);
     }
 
-    public SignupLoginPage setSignupName(){
-        setElementText(signUpNameField,"testing");
+    public SignupLoginPage setSignupName() {
+        setElementText(signUpNameField, "testing");
         return this;
     }
 
-    public SignupLoginPage setSignupEmail(){
-        setElementText(signUpEmailField,"testmaaaaaail@m.com");
+    public SignupLoginPage setSignupEmail() {
+        setElementText(signUpEmailField, "testmaaaaaaaaail@m.com");
         return this;
     }
-    public void clickOnSignupButton(){
+
+    public void clickOnSignupButton() {
         clickOnElement(signUpBtn);
     }
 }

@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class SignupPage extends PageBase {
     private static final By mrTitleRadioBtn = By.id("id_gender1");
@@ -102,12 +103,12 @@ public class SignupPage extends PageBase {
         return this;
     }
 
-    public void clickOnSignUpButton() {
+    public SignupPage clickOnSignUpButton() {
         clickOnElement(createAccountBtn);
+        return this;
     }
 
-    public String getAccountStatusText() {
-        return driver.findElement(accountCreationStatus).getText();
+    public void assertThatAccountCreatedSuccessfully() {
+        Assert.assertEquals(driver.findElement(accountCreationStatus).getText(), "ACCOUNT CREATED!");
     }
-
 }
