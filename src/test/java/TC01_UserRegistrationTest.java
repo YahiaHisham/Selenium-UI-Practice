@@ -1,10 +1,10 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.SignupLoginPage;
 import pages.SignupPage;
 
@@ -35,7 +35,14 @@ public class TC01_UserRegistrationTest {
                 .setCity()
                 .setZipCode()
                 .setMobileNumber()
-                .clickOnSignUpButton();
+                .clickOnSignUpButton()
+                .assertThatAccountCreatedSuccessfully()
+                .clickOnContinueButton()
+                .clickOnCloseAd();
+        new HomePage(driver)
+                .clickOnDeleteButton()
+                .assertThatAccountDeletedSuccessfully();
+
     }
 
     @BeforeTest
@@ -49,6 +56,6 @@ public class TC01_UserRegistrationTest {
 
     @AfterTest
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 }

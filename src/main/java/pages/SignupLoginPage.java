@@ -18,7 +18,7 @@ public class SignupLoginPage extends PageBase {
     }
 
     public SignupLoginPage setSignupEmail() {
-        setElementText(signUpEmailField, "testmaaaaaaaaail@m.com");
+        setElementText(signUpEmailField, generateRandomText(8)+"@m.com");
         return this;
     }
 

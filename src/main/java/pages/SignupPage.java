@@ -21,6 +21,9 @@ public class SignupPage extends PageBase {
     private static final By mobileNumberField = By.id("mobile_number");
     private static final By createAccountBtn = By.xpath("//button[text()='Create Account']");
     private static final By accountCreationStatus = By.xpath("//h2[@data-qa='account-created']");
+    private static final By continueBtn = By.xpath("//a[@data-qa='continue-button']");
+    private static final By frame = By.id("ad_iframe");
+    private static final By closeAdButton = By.id("dismiss-button");
 
     public SignupPage(WebDriver driver) {
         super(driver);
@@ -40,7 +43,7 @@ public class SignupPage extends PageBase {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(dayOfBirthDropDown));
         // Select an option by its index
-        dropdown.selectByIndex(1);
+        dropdown.selectByIndex(Integer.parseInt(generateRandomNumbers(1)));
         return this;
     }
 
@@ -48,7 +51,7 @@ public class SignupPage extends PageBase {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(monthOfBirthDropDown));
         // Select an option by its index
-        dropdown.selectByIndex(1);
+        dropdown.selectByIndex(Integer.parseInt(generateRandomNumbers(1)));
         return this;
     }
 
@@ -56,22 +59,22 @@ public class SignupPage extends PageBase {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(yearOfBirthDropDown));
         // Select an option by its index
-        dropdown.selectByIndex(1);
+        dropdown.selectByIndex(Integer.parseInt(generateRandomNumbers(2)));
         return this;
     }
 
     public SignupPage setFirstName() {
-        setElementText(firstNameField, "Yahia");
+        setElementText(firstNameField, generateRandomText(6));
         return this;
     }
 
     public SignupPage setLastName() {
-        setElementText(lastNameField, "Hisham");
+        setElementText(lastNameField, generateRandomText(6));
         return this;
     }
 
     public SignupPage setAddress() {
-        setElementText(addressField, "Address @ city 1234");
+        setElementText(addressField, generateRandomText(10) + generateRandomNumbers(4));
         return this;
     }
 
@@ -84,22 +87,22 @@ public class SignupPage extends PageBase {
     }
 
     public SignupPage setState() {
-        setElementText(stateField, "State 2");
+        setElementText(stateField, generateRandomText(5) + generateRandomNumbers(1));
         return this;
     }
 
     public SignupPage setCity() {
-        setElementText(cityField, "Cairo");
+        setElementText(cityField, generateRandomText(8));
         return this;
     }
 
     public SignupPage setZipCode() {
-        setElementText(zipCodeField, "123456");
+        setElementText(zipCodeField, generateRandomNumbers(6));
         return this;
     }
 
     public SignupPage setMobileNumber() {
-        setElementText(mobileNumberField, "01111556666");
+        setElementText(mobileNumberField, "01" + generateRandomNumbers(9));
         return this;
     }
 
@@ -108,7 +111,19 @@ public class SignupPage extends PageBase {
         return this;
     }
 
-    public void assertThatAccountCreatedSuccessfully() {
+    public SignupPage assertThatAccountCreatedSuccessfully() {
         Assert.assertEquals(driver.findElement(accountCreationStatus).getText(), "ACCOUNT CREATED!");
+        return this;
+    }
+
+    public SignupPage clickOnContinueButton() {
+        clickOnElement(continueBtn);
+        return this;
+    }
+
+    public void clickOnCloseAd() {
+//        finds Ad frame and switches to it
+        driver.switchTo().frame(driver.findElement(frame));
+        clickOnElement(closeAdButton);
     }
 }
