@@ -18,11 +18,16 @@ public class SignupLoginPage extends PageBase {
     }
 
     public SignupLoginPage setSignupEmail() {
-        setElementText(signUpEmailField, generateRandomText(8)+"@m.com");
+        setElementText(signUpEmailField, generateRandomText(8) + "@m.com");
         return this;
     }
 
-    public void clickOnSignupButton() {
+    public SignupLoginPage clickOnSignupButton() {
         clickOnElement(signUpBtn);
+        return this;
+    }
+
+    public SignupPage signupPage() {
+        return new SignupPage(driver);
     }
 }

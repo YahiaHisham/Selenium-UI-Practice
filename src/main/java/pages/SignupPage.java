@@ -132,4 +132,8 @@ public class SignupPage extends PageBase {
         driver.navigate().refresh();
         return this;
     }
+
+    public HomePage homePage() {
+        return new HomePage(driver);
+    }
 }
