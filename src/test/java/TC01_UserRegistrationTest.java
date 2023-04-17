@@ -38,7 +38,8 @@ public class TC01_UserRegistrationTest {
                 .clickOnSignUpButton()
                 .assertThatAccountCreatedSuccessfully()
                 .clickOnContinueButton()
-                .clickOnCloseAd();
+                .clickOnCloseAd()
+                .clickOnContinueButton();
         new HomePage(driver)
                 .clickOnDeleteButton()
                 .assertThatAccountDeletedSuccessfully();

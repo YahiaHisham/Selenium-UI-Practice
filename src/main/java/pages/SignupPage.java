@@ -22,8 +22,8 @@ public class SignupPage extends PageBase {
     private static final By createAccountBtn = By.xpath("//button[text()='Create Account']");
     private static final By accountCreationStatus = By.xpath("//h2[@data-qa='account-created']");
     private static final By continueBtn = By.xpath("//a[@data-qa='continue-button']");
-    private static final By frame = By.id("ad_iframe");
-    private static final By closeAdButton = By.id("dismiss-button");
+//    private static final By closeAdButton = By.id("dismiss-button");
+
 
     public SignupPage(WebDriver driver) {
         super(driver);
@@ -121,9 +121,15 @@ public class SignupPage extends PageBase {
         return this;
     }
 
-    public void clickOnCloseAd() {
-//        finds Ad frame and switches to it
-        driver.switchTo().frame(driver.findElement(frame));
+    public SignupPage clickOnCloseAd() {
+/*
+        I have tried to switch to the AD iFrame, but it sometimes fails because the add design and locators changes
+        every run, so I decided to just avoid the AD by refreshing the page and commenting the code that switches to iFrame
+        driver.switchTo().frame("ad_iframe");
         clickOnElement(closeAdButton);
+        driver.switchTo().defaultContent();
+*/
+        driver.navigate().refresh();
+        return this;
     }
 }
