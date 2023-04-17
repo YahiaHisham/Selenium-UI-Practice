@@ -4,9 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.HomePage;
 import pages.SignupLoginPage;
-import pages.SignupPage;
 
 import java.time.Duration;
 
@@ -20,8 +18,8 @@ public class TC01_UserRegistrationTest {
         new SignupLoginPage(driver)
                 .setSignupName()
                 .setSignupEmail()
-                .clickOnSignupButton();
-        new SignupPage(driver)
+                .clickOnSignupButton()
+                .signupPage()
                 .setTitleToMr()
                 .setPassword()
                 .setDayOfBirth()
@@ -39,8 +37,8 @@ public class TC01_UserRegistrationTest {
                 .assertThatAccountCreatedSuccessfully()
                 .clickOnContinueButton()
                 .clickOnCloseAd()
-                .clickOnContinueButton();
-        new HomePage(driver)
+                .clickOnContinueButton()
+                .homePage()
                 .clickOnDeleteButton()
                 .assertThatAccountDeletedSuccessfully();
 
