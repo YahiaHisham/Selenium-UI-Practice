@@ -133,6 +133,25 @@ public class SignupPage extends PageBase {
         return this;
     }
 
+    public SignupPage signUpActions()
+    {
+            setTitleToMr();
+            setPassword();
+            setDayOfBirth();
+            setMonthOfBirth();
+            setYearOfBirth();
+            setFirstName();
+            setLastName();
+            setAddress();
+            setCountry();
+            setState();
+            setCity();
+            setZipCode();
+            setMobileNumber();
+            clickOnSignUpButton();
+            return this;
+    }
+
     public HomePage homePage() {
         return new HomePage(driver);
     }
