@@ -15,7 +15,7 @@ public class SignupLoginPage extends PageBase {
     }
 
     public SignupLoginPage setSignupName() {
-        String name = generateRandomText(8) + generateRandomText(5);
+        String name = generateRandomText(8) + " " +generateRandomText(5);
         setElementText(signUpNameField, name);
         Helper.updateValueInPropertiesFile("name", name, "UserRegistrationData");
         return this;
