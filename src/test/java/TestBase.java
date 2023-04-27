@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
 
 public class TestBase {
@@ -16,9 +17,19 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
-
     @AfterTest
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
+    }
+
+    public String getTestClassName()
+    {
+        return this.getClass().getSimpleName();
+
+    }
+
+    public String getMethodName(Method method) {
+        System.out.println("Test name: " + method.getName());
+        return method.getName();
     }
 }
