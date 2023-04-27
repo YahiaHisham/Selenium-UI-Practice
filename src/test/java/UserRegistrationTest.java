@@ -1,16 +1,9 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.SignupLoginPage;
 
 import java.time.Duration;
 
-public class TC01_UserRegistrationTest {
-    public static WebDriver driver;
-
+public class UserRegistrationTest extends TestBase{
     @Test
     public void verifyThatUserCanRegisterSuccessfully() {
         new SignupLoginPage(driver)
@@ -37,24 +30,8 @@ public class TC01_UserRegistrationTest {
                 .assertThatAccountCreatedSuccessfully()
                 .clickOnContinueButton()
                 .clickOnCloseAd()
-                .clickOnContinueButton()
                 .homePage()
                 .clickOnDeleteButton()
                 .assertThatAccountDeletedSuccessfully();
-
-    }
-
-    @BeforeTest
-    public void startBrowser() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get("https://automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    }
-
-    @AfterTest
-    public void tearDown() {
-//        driver.quit();
     }
 }
