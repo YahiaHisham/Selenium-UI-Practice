@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SignupLoginPage extends PageBase {
+    private static final By signupLoginButton = By.xpath("//a[text()=' Signup / Login']");
     private static final By signUpNameField = By.xpath("//input[@data-qa='signup-name']");
     private static final By signUpEmailField = By.xpath("//input[@data-qa='signup-email']");
     private static final By signUpBtn = By.xpath("//button[@data-qa='signup-button']");
@@ -29,5 +30,9 @@ public class SignupLoginPage extends PageBase {
 
     public SignupPage signupPage() {
         return new SignupPage(driver);
+    }
+    public SignupLoginPage clickOnSignupLoginButton() {
+        clickOnElement(signupLoginButton);
+        return this;
     }
 }
