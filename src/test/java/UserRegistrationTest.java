@@ -7,8 +7,7 @@ public class UserRegistrationTest extends TestBase{
     @Test
     public void verifyThatUserCanRegisterSuccessfully() {
         new SignupLoginPage(driver)
-                .clickOnSignupLoginButton();
-        new SignupLoginPage(driver)
+                .clickOnSignupLoginButton()
                 .setSignupName()
                 .setSignupEmail()
                 .clickOnSignupButton()
