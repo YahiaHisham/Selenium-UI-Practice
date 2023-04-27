@@ -1,5 +1,6 @@
 package pages;
 
+import data.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -22,8 +23,6 @@ public class SignupPage extends PageBase {
     private static final By createAccountBtn = By.xpath("//button[text()='Create Account']");
     private static final By accountCreationStatus = By.xpath("//h2[@data-qa='account-created']");
     private static final By continueBtn = By.xpath("//a[@data-qa='continue-button']");
-//    private static final By closeAdButton = By.id("dismiss-button");
-
 
     public SignupPage(WebDriver driver) {
         super(driver);
@@ -35,7 +34,9 @@ public class SignupPage extends PageBase {
     }
 
     public SignupPage setPassword() {
-        setElementText(passwordField, "123456789@Aa");
+        String password = generateRandomText(5)+generateRandomNumbers(4);
+        setElementText(passwordField, password);
+        Helper.updateValueInPropertiesFile("password",password,"UserRegistrationData");
         return this;
     }
 

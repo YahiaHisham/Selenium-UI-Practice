@@ -11,7 +11,6 @@ import java.time.Duration;
 import java.util.Random;
 
 public class PageBase {
-    private final By signupLoginButton = By.xpath("//a[text()=' Signup / Login']");
     WebDriver driver;
 
     public PageBase(WebDriver driver) {
@@ -35,10 +34,6 @@ public class PageBase {
                 .until(ExpectedConditions.presenceOfElementLocated(elementLocator));
         scrollToElementView(elementLocator);
         driver.findElement(elementLocator).sendKeys(text);
-    }
-
-    public void clickOnSignupLoginButton() {
-        clickOnElement(signupLoginButton);
     }
 
     public static String generateRandomText(int length) {
