@@ -1,7 +1,8 @@
 [
   {
-    "TC01": {
-      "username": "mohamed"
+    "verifySignInSuccessfully": {
+      "email" : "SeleniumTEST@gmail.com",
+      "password" : "SeleniumTEST"
     }
   }
 ]

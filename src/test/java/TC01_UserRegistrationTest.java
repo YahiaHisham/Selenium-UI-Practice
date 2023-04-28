@@ -1,23 +1,33 @@
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import pages.LoginPage;
 import pages.SignupLoginPage;
 import pages.SignupPage;
 import resources.JSONReader;
 
+import java.lang.reflect.Method;
 
 public class TC01_UserRegistrationTest extends TestBase{
 
-String username = JSONReader.readJSON(getTestClassName(),getMethodName(getClass().getMethod(getTestClassName())));
+public static String email;
+public static String password;
 
-    public TC01_UserRegistrationTest() throws NoSuchMethodException {
-    }
-
+@BeforeMethod
+public void setup(Method method)
+{
+    email = JSONReader.readJSON(getTestClassName(),method.getName(),"email");
+    password = JSONReader.readJSON(getTestClassName(),method.getName(),"password");
+}
     @Test
-    public void TC01()
+    public void verifySignInSuccessfully()
     {
         System.out.println(getTestClassName());
-        System.out.println(getMethodName(getClass().getEnclosingMethod()));
-        System.out.println(username);
+        System.out.println(email);
+        new LoginPage(driver)
+                .signInAction(email , password)
+                .verifySuccessfulLogin();
     }
     @Test
     public void verifyThatUserCanRegisterSuccessfully() {
