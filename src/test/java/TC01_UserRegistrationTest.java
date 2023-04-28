@@ -23,8 +23,6 @@ public void setup(Method method)
     @Test
     public void verifySignInSuccessfully()
     {
-        System.out.println(getTestClassName());
-        System.out.println(email);
         new LoginPage(driver)
                 .signInAction(email , password)
                 .verifySuccessfulLogin();
