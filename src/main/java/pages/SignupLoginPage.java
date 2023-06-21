@@ -1,6 +1,6 @@
 package pages;
 
-import data.Helper;
+import data.PropertiesFileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,26 +20,26 @@ public class SignupLoginPage extends PageBase {
     public SignupLoginPage setSignupName() {
         String name = generateRandomText(8) + " " +generateRandomText(5);
         setElementText(signUpNameField, name);
-        Helper.updateValueInPropertiesFile("name", name, "UserRegistrationData");
+        PropertiesFileReader.updateValueInPropertiesFile("name", name, "UserRegistrationData");
         return this;
     }
     public SignupLoginPage setSignupNameE2E() {
         String name = generateRandomText(8) + " " +generateRandomText(5);
         setElementText(signUpNameField, name);
-        Helper.updateValueInPropertiesFile("nameE2E", name, "UserRegistrationData");
+        PropertiesFileReader.updateValueInPropertiesFile("nameE2E", name, "UserRegistrationData");
         return this;
     }
 
     public SignupLoginPage setSignupEmail() {
         String email = generateRandomText(8) + "@m.com";
         setElementText(signUpEmailField, email);
-        Helper.updateValueInPropertiesFile("emailE2E", email, "UserRegistrationData");
+        PropertiesFileReader.updateValueInPropertiesFile("emailE2E", email, "UserRegistrationData");
         return this;
     }
     public SignupLoginPage setSignupEmailE2E() {
         String email = generateRandomText(8) + "@m.com";
         setElementText(signUpEmailField, email);
-        Helper.updateValueInPropertiesFile("email", email, "UserRegistrationData");
+        PropertiesFileReader.updateValueInPropertiesFile("email", email, "UserRegistrationData");
         return this;
     }
 
@@ -48,11 +48,11 @@ public class SignupLoginPage extends PageBase {
         return this;
     }
     public SignupLoginPage setLoginMail() {
-        setElementText(loginEmailField,Helper.getValueFromPropertiesFile("email","UserRegistrationData"));
+        setElementText(loginEmailField, PropertiesFileReader.getValueFromPropertiesFile("email","UserRegistrationData"));
         return this;
     }
     public SignupLoginPage setLoginPassword() {
-        setElementText(loginPasswordField,Helper.getValueFromPropertiesFile("password","UserRegistrationData"));
+        setElementText(loginPasswordField, PropertiesFileReader.getValueFromPropertiesFile("password","UserRegistrationData"));
         return this;
     }
     public SignupLoginPage clickOnLoginButton() {

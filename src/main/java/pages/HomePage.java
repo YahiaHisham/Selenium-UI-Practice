@@ -1,6 +1,6 @@
 package pages;
 
-import data.Helper;
+import data.PropertiesFileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -24,7 +24,7 @@ public class HomePage extends PageBase {
     }
 
     public HomePage assertThatUserIsLoggedInSuccessfully() {
-        Assert.assertEquals(driver.findElement(loggedUserName).getText(),"Logged in as " + Helper.getValueFromPropertiesFile("name", "UserRegistrationData"));
+        Assert.assertEquals(driver.findElement(loggedUserName).getText(),"Logged in as " + PropertiesFileReader.getValueFromPropertiesFile("name", "UserRegistrationData"));
         return this;
     }
 }

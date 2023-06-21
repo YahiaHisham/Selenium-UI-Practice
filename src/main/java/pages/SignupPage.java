@@ -1,6 +1,6 @@
 package pages;
 
-import data.Helper;
+import data.PropertiesFileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -36,7 +36,7 @@ public class SignupPage extends PageBase {
     public SignupPage setPassword() {
         String password = generateRandomText(5)+generateRandomNumbers(4);
         setElementText(passwordField, password);
-        Helper.updateValueInPropertiesFile("password",password,"UserRegistrationData");
+        PropertiesFileReader.updateValueInPropertiesFile("password",password,"UserRegistrationData");
         return this;
     }
 
