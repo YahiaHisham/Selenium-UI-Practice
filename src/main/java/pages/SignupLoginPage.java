@@ -1,5 +1,6 @@
 package pages;
 
+import data.JsonReader;
 import data.PropertiesFileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,26 +21,26 @@ public class SignupLoginPage extends PageBase {
     public SignupLoginPage setSignupName() {
         String name = generateRandomText(8) + " " +generateRandomText(5);
         setElementText(signUpNameField, name);
-        PropertiesFileReader.updateValueInPropertiesFile("name", name, "UserRegistrationData");
+        JsonReader.updateValueInJsonFile("name", name, "UserRegistrationData");
         return this;
     }
     public SignupLoginPage setSignupNameE2E() {
         String name = generateRandomText(8) + " " +generateRandomText(5);
         setElementText(signUpNameField, name);
-        PropertiesFileReader.updateValueInPropertiesFile("nameE2E", name, "UserRegistrationData");
+        JsonReader.updateValueInJsonFile("nameE2E", name, "UserRegistrationData");
         return this;
     }
 
     public SignupLoginPage setSignupEmail() {
         String email = generateRandomText(8) + "@m.com";
         setElementText(signUpEmailField, email);
-        PropertiesFileReader.updateValueInPropertiesFile("emailE2E", email, "UserRegistrationData");
+        JsonReader.updateValueInJsonFile("email", email, "UserRegistrationData");
         return this;
     }
     public SignupLoginPage setSignupEmailE2E() {
         String email = generateRandomText(8) + "@m.com";
         setElementText(signUpEmailField, email);
-        PropertiesFileReader.updateValueInPropertiesFile("email", email, "UserRegistrationData");
+        JsonReader.updateValueInJsonFile("emailE2E", email, "UserRegistrationData");
         return this;
     }
 
@@ -48,11 +49,12 @@ public class SignupLoginPage extends PageBase {
         return this;
     }
     public SignupLoginPage setLoginMail() {
-        setElementText(loginEmailField, PropertiesFileReader.getValueFromPropertiesFile("email","UserRegistrationData"));
+        setElementText(loginEmailField, JsonReader.getValueFromJsonFile("email","UserRegistrationData"));
+
         return this;
     }
     public SignupLoginPage setLoginPassword() {
-        setElementText(loginPasswordField, PropertiesFileReader.getValueFromPropertiesFile("password","UserRegistrationData"));
+        setElementText(loginPasswordField, JsonReader.getValueFromJsonFile("password","UserRegistrationData"));
         return this;
     }
     public SignupLoginPage clickOnLoginButton() {

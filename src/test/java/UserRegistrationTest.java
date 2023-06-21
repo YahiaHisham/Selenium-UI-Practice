@@ -9,7 +9,7 @@ public class UserRegistrationTest extends TestBase{
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()
                 .setSignupName()
-                .setSignupEmailE2E()
+                .setSignupEmail()
                 .clickOnSignupButton()
                 .signupPage()
                 .setTitleToMr()

@@ -7,8 +7,6 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class JsonReader {
     static String classLocation = "/src/main/java/data/";
@@ -27,13 +25,13 @@ public class JsonReader {
         }
     }
 
-    public static Object getValueFromJsonFile2(String fileName, String key) {
+    public static String getValueFromJsonFile(String key, String fileName) {
         setFilePath(fileName);
         loadJson();
-        return jsonObject.get(key);
+        return jsonObject.get(key).toString();
     }
 
-    public static void updateValueInJsonFile2(String fileName, String key, Object value) {
+    public static void updateValueInJsonFile(String key, Object value, String fileName) {
         setFilePath(fileName);
         loadJson();
         jsonObject.put(key, value);
