@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeTest;
 import java.time.Duration;
 
 public class TestBase {
-    public static WebDriver driver;
+    public WebDriver driver;
     @BeforeMethod
     public void startBrowser() {
         WebDriverManager.chromedriver().setup();

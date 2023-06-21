@@ -13,4 +13,5 @@ public class UserLoginTest extends TestBase {
         new HomePage(driver)
                 .assertThatUserIsLoggedInSuccessfully();
     }
+
 }

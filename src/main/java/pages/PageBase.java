@@ -26,7 +26,12 @@ public class PageBase {
 
     public void scrollToElementView(By elementLocator) {
         WebElement element = driver.findElement(elementLocator);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+//        to scroll until the element view is in the middle of the screen
+        int elementPositionY = element.getLocation().getY();
+        int viewportHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;")).intValue();
+
+        int scrollPositionY = elementPositionY - (viewportHeight / 2);
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, arguments[0]);", scrollPositionY);
     }
 
     public void setElementText(By elementLocator, String text) {
