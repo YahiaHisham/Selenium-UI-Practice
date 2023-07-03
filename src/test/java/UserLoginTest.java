@@ -4,7 +4,7 @@ import pages.SignupLoginPage;
 
 public class UserLoginTest extends TestBase {
     @Test(dependsOnMethods = {"UserRegistrationTest.verifyThatUserCanRegisterSuccessfully"})
-    public void loginWithValidCredentials() {
+    public void verifyThatUserCanLoginWithValidCredentials() {
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()
                 .setLoginMail()
@@ -14,4 +14,25 @@ public class UserLoginTest extends TestBase {
                 .assertThatUserIsLoggedInSuccessfully();
     }
 
+    @Test
+    public void verifyThatUserCantLoginWithInvalidCredentials() {
+        new SignupLoginPage(driver)
+                .clickOnSignupLoginButton()
+                .setInvalidLoginMail()
+                .setLoginPassword()
+                .clickOnLoginButton()
+                .assertThatInvalidLoginCredentialsErrorMsgAppears();
+    }
+    @Test
+    public void verifyThatUserCanLogoutSuccessfully() {
+        new SignupLoginPage(driver)
+                .clickOnSignupLoginButton()
+                .setLoginMail()
+                .setLoginPassword()
+                .clickOnLoginButton();
+        new HomePage(driver)
+                .assertThatUserIsLoggedInSuccessfully()
+                .clickOnLogoutButton()
+                .assertThatUserIsLoggedOutSuccessfully();
+    }
 }

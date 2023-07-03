@@ -1,9 +1,7 @@
 import org.testng.annotations.Test;
 import pages.SignupLoginPage;
 
-import java.time.Duration;
-
-public class UserRegistrationTest extends TestBase{
+public class UserRegistrationTest extends TestBase {
     @Test
     public void verifyThatUserCanRegisterSuccessfully() {
         new SignupLoginPage(driver)
@@ -29,9 +27,11 @@ public class UserRegistrationTest extends TestBase{
                 .assertThatAccountCreatedSuccessfully()
                 .clickOnContinueButton()
                 .clickOnCloseAd()
+                .clickOnContinueButton()
                 .homePage()
                 .assertThatUserIsLoggedInSuccessfully();
     }
+
     @Test
     public void verifyThatUserCanRegisterSuccessfullyE2E() {
         new SignupLoginPage(driver)
@@ -61,5 +61,14 @@ public class UserRegistrationTest extends TestBase{
                 .assertThatUserIsLoggedInSuccessfully()
                 .clickOnDeleteButton()
                 .assertThatAccountDeletedSuccessfully();
+    }
+    @Test
+    public void verifyThatUserCantRegisterUsingExistingMail() {
+        new SignupLoginPage(driver)
+                .clickOnSignupLoginButton()
+                .setSignupName()
+                .setExistingSignupEmail()
+                .clickOnSignupButton()
+                .assertThatEmailAlreadyExistErrorMsgAppears();
     }
 }
