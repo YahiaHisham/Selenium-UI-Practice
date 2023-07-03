@@ -1,5 +1,4 @@
 import org.testng.annotations.Test;
-import pages.HomePage;
 import pages.SignupLoginPage;
 
 public class UserLoginTest extends TestBase {
@@ -9,8 +8,8 @@ public class UserLoginTest extends TestBase {
                 .clickOnSignupLoginButton()
                 .setLoginMail()
                 .setLoginPassword()
-                .clickOnLoginButton();
-        new HomePage(driver)
+                .clickOnLoginButton()
+                .homePage()
                 .assertThatUserIsLoggedInSuccessfully();
     }
 
@@ -23,14 +22,15 @@ public class UserLoginTest extends TestBase {
                 .clickOnLoginButton()
                 .assertThatInvalidLoginCredentialsErrorMsgAppears();
     }
+
     @Test(dependsOnMethods = {"UserRegistrationTest.verifyThatUserCanRegisterSuccessfully"})
     public void verifyThatUserCanLogoutSuccessfully() {
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()
                 .setLoginMail()
                 .setLoginPassword()
-                .clickOnLoginButton();
-        new HomePage(driver)
+                .clickOnLoginButton()
+                .homePage()
                 .assertThatUserIsLoggedInSuccessfully()
                 .clickOnLogoutButton()
                 .assertThatUserIsLoggedOutSuccessfully();
