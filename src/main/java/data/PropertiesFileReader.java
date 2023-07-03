@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Helper {
+public class PropertiesFileReader {
     static String classLocation = "/src/main/java/data/";
     static String fileExtension = ".properties";
     static String projectLocation = "user.dir";

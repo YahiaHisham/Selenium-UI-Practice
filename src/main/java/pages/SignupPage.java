@@ -1,6 +1,6 @@
 package pages;
 
-import data.Helper;
+import data.JsonReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -21,7 +21,6 @@ public class SignupPage extends PageBase {
     private static final By zipCodeField = By.id("zipcode");
     private static final By mobileNumberField = By.id("mobile_number");
     private static final By createAccountBtn = By.xpath("//button[text()='Create Account']");
-    private static final By accountCreationStatus = By.xpath("//h2[@data-qa='account-created']");
     private static final By continueBtn = By.xpath("//a[@data-qa='continue-button']");
 
     public SignupPage(WebDriver driver) {
@@ -34,9 +33,9 @@ public class SignupPage extends PageBase {
     }
 
     public SignupPage setPassword() {
-        String password = generateRandomText(5)+generateRandomNumbers(4);
+        String password = generateRandomText(5) + generateRandomNumbers(4);
         setElementText(passwordField, password);
-        Helper.updateValueInPropertiesFile("password",password,"UserRegistrationData");
+        JsonReader.updateValueInJsonFile("password", password, "RegisteredUserData");
         return this;
     }
 
@@ -113,7 +112,7 @@ public class SignupPage extends PageBase {
     }
 
     public SignupPage assertThatAccountCreatedSuccessfully() {
-        Assert.assertEquals(driver.findElement(accountCreationStatus).getText(), "ACCOUNT CREATED!");
+        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Account Created");
         return this;
     }
 
