@@ -10,6 +10,7 @@ public class HomePage extends PageBase {
     private static final By accountDeletionSuccessMsg = By.xpath("//h2[@data-qa='account-deleted']");
     private static final By loggedUserName = By.xpath("//a[.//i[@class='fa fa-user']]");
     private static final By contactUsBtn = By.cssSelector("i.fa-envelope");
+    private static final By testCasesBtn = By.xpath("//a[contains(text(),'Test Cases')]");
     private static final By logoutBtn = By.cssSelector("i.fa-lock");
 
     public HomePage(WebDriver driver) {
@@ -29,6 +30,10 @@ public class HomePage extends PageBase {
         clickOnElement(contactUsBtn);
         return this;
     }
+    public HomePage clickOnTestCasesButton() {
+        clickOnElement(testCasesBtn);
+        return this;
+    }
 
     public void assertThatAccountDeletedSuccessfully() {
         Assert.assertEquals(driver.findElement(accountDeletionSuccessMsg).getText(), "ACCOUNT DELETED!");
@@ -44,5 +49,8 @@ public class HomePage extends PageBase {
     }
     public ContactUsPage contactUsPage() {
         return new ContactUsPage(driver);
+    }
+    public TestCasesPage testCasesPage() {
+        return new TestCasesPage(driver);
     }
 }
