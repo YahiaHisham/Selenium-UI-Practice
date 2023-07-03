@@ -85,4 +85,7 @@ public class SignupLoginPage extends PageBase {
         clickOnElement(signupLoginButton);
         return this;
     }
+    public HomePage homePage() {
+        return new HomePage(driver);
+    }
 }
