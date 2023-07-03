@@ -23,7 +23,7 @@ public class UserLoginTest extends TestBase {
                 .clickOnLoginButton()
                 .assertThatInvalidLoginCredentialsErrorMsgAppears();
     }
-    @Test
+    @Test(dependsOnMethods = {"UserRegistrationTest.verifyThatUserCanRegisterSuccessfully"})
     public void verifyThatUserCanLogoutSuccessfully() {
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()
