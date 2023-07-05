@@ -11,12 +11,16 @@ public class HomePage extends PageBase {
     private static final By loggedUserName = By.xpath("//a[.//i[@class='fa fa-user']]");
     private static final By contactUsBtn = By.cssSelector("i.fa-envelope");
     private static final By testCasesBtn = By.xpath("//a[contains(text(),'Test Cases')]");
+    private static final By productsBtn = By.cssSelector("i.card_travel");
     private static final By logoutBtn = By.cssSelector("i.fa-lock");
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
+    public HomePage clickOnProductsButton() {
+        clickOnElement(productsBtn);
+        return this;
+    }
     public HomePage clickOnDeleteButton() {
         clickOnElement(deleteAccountBtn);
         return this;
@@ -40,7 +44,7 @@ public class HomePage extends PageBase {
     }
 
     public HomePage assertThatUserIsLoggedInSuccessfully() {
-        Assert.assertEquals(driver.findElement(loggedUserName).getText(), "Logged in as " + JsonReader.getValueFromJsonFile("name", "RegisteredUserData"));
+        Assert.assertEquals(driver.findElement(loggedUserName).getText(), "Logged in as " + JsonReader.getValueFromJsonFile("nameE2E", "RegisteredUserData"));
         return this;
     }
 
@@ -52,5 +56,8 @@ public class HomePage extends PageBase {
     }
     public TestCasesPage testCasesPage() {
         return new TestCasesPage(driver);
+    }
+    public ProductsListingPage productsListingPage() {
+        return new ProductsListingPage(driver);
     }
 }
