@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,10 +19,28 @@ public class PageBase {
     }
 
     public void clickOnElement(By elementLocator) {
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(elementLocator));
+        waitUntilPresenceOfElement(elementLocator);
         scrollToElementView(elementLocator);
         driver.findElement(elementLocator).click();
+    }
+    public void clickOnElements(By elementLocator, int index) {
+        waitUntilPresenceOfElement(elementLocator);
+        scrollToElementView(elementLocator);
+        driver.findElements(elementLocator).get(index).click();
+    }
+
+    public void setElementText(By elementLocator, String text) {
+        waitUntilPresenceOfElement(elementLocator);
+        scrollToElementView(elementLocator);
+        driver.findElement(elementLocator).sendKeys(text);
+    }
+    public void waitUntilPresenceOfElement(By elementLocator) {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(elementLocator));
+    }
+    public void waitUntilPresenceOfElement(WebElement elementLocator) {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(elementLocator));
     }
 
     public void scrollToElementView(By elementLocator) {
@@ -33,14 +52,14 @@ public class PageBase {
         int scrollPositionY = elementPositionY - (viewportHeight / 2);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, arguments[0]);", scrollPositionY);
     }
+    public void scrollToElementView(WebElement elementLocator) {
+//        to scroll until the element view is in the middle of the screen
+        int elementPositionY = elementLocator.getLocation().getY();
+        int viewportHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;")).intValue();
 
-    public void setElementText(By elementLocator, String text) {
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(elementLocator));
-        scrollToElementView(elementLocator);
-        driver.findElement(elementLocator).sendKeys(text);
+        int scrollPositionY = elementPositionY - (viewportHeight / 2);
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, arguments[0]);", scrollPositionY);
     }
-
     public static String generateRandomText(int length) {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         StringBuilder sb = new StringBuilder();
@@ -60,5 +79,17 @@ public class PageBase {
             sb.append(c);
         }
         return sb.toString();
+    }
+    public void hoverOverElement(By elementLocator){
+        waitUntilPresenceOfElement(elementLocator);
+        scrollToElementView(elementLocator);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(elementLocator)).build().perform();
+    }
+    public void hoverOverElement(WebElement elementLocator){
+        waitUntilPresenceOfElement(elementLocator);
+        scrollToElementView(elementLocator);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(elementLocator).build().perform();
     }
 }
