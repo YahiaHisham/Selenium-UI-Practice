@@ -2,7 +2,7 @@ import org.testng.annotations.Test;
 import pages.SignupLoginPage;
 
 public class UserLoginTest extends TestBase {
-    @Test(dependsOnMethods = {"UserRegistrationTest.verifyThatUserCanRegisterSuccessfully"})
+    @Test(dependsOnMethods = {"UserRegistrationTest.verifyThatUserCanRegisterSuccessfullyE2E"})
     public void verifyThatUserCanLoginWithValidCredentials() {
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()
