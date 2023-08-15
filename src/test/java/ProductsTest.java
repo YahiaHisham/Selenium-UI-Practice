@@ -17,4 +17,14 @@ public class ProductsTest extends TestBase {
                 .assertThatProductConditionDisplayed()
                 .assertThatProductBrandDisplayed();
     }
+    @Test
+    public void verifyThatUserCanSearchForProduct() {
+        new HomePage(driver)
+                .clickOnProductsButton()
+                .productsListingPage()
+                .assertThatAllProductsPageDisplayed()
+                .searchForProduct("top")
+                .clickOnSearchButton()
+                .assertThatAllResultsAreRelatedToSearchQuery();
+    }
 }

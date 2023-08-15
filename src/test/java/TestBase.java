@@ -1,4 +1,3 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,13 +12,13 @@ public class TestBase {
     public WebDriver driver;
 
     /**
-     * this method is to start browser session and adds AdBlocker Chrome extension before redirecting to
-     * the webpage and then closes the new tab that automatically opens from AdBlock extension and
-     * continues the execution flow normally
+     * this method is to start browser session and adds AdBlocker Chrome extension
+     * before redirecting to the webpage and then
+     * closes the new tab that it's automatically opened from
+     * AdBlock extension and continues the execution flow normally
      */
     @BeforeMethod
     public void startBrowser() {
-        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("./src/test/resources/chromeExtensions/AdBlock.crx"));
         driver = new ChromeDriver(options);
