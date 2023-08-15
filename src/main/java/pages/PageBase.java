@@ -14,7 +14,6 @@ import java.util.Random;
 public class PageBase {
     WebDriver driver;
 
-
     public PageBase(WebDriver driver) {
         this.driver = driver;
     }
@@ -47,21 +46,22 @@ public class PageBase {
         driver.findElement(elementLocator).click();
     }
 
-    public void clickOnElements(By elementLocator, int index) {
+    public void clickOnElement(By elementLocator, int index) {
         waitUntilPresenceOfElement(elementLocator, index);
         scrollToElementView(elementLocator, index);
         driver.findElements(elementLocator).get(index).click();
     }
 
-    public void forceClickUsingJavaScript(By elementLocator, int index) {
+    public void setElementText(By elementLocator, String text) {
+        waitUntilPresenceOfElement(elementLocator);
+        scrollToElementView(elementLocator);
+        driver.findElement(elementLocator).sendKeys(text);
+    }
+
+    public void setElementText(By elementLocator, int index, String text) {
         waitUntilPresenceOfElement(elementLocator, index);
         scrollToElementView(elementLocator, index);
-        // Cast the WebDriver instance to JavascriptExecutor
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        // Replace 'element' with the actual WebElement you want to click
-        WebElement element = driver.findElements(elementLocator).get(index);
-        // Use JavaScript to force the click
-        jsExecutor.executeScript("arguments[0].click();", element);
+        driver.findElements(elementLocator).get(index).sendKeys(text);
     }
 
     public void forceClickUsingJavaScript(By elementLocator) {
@@ -75,10 +75,15 @@ public class PageBase {
         jsExecutor.executeScript("arguments[0].click();", element);
     }
 
-    public void setElementText(By elementLocator, String text) {
-        waitUntilPresenceOfElement(elementLocator);
-        scrollToElementView(elementLocator);
-        driver.findElement(elementLocator).sendKeys(text);
+    public void forceClickUsingJavaScript(By elementLocator, int index) {
+        waitUntilPresenceOfElement(elementLocator, index);
+        scrollToElementView(elementLocator, index);
+        // Cast the WebDriver instance to JavascriptExecutor
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        // Replace 'element' with the actual WebElement you want to click
+        WebElement element = driver.findElements(elementLocator).get(index);
+        // Use JavaScript to force the click
+        jsExecutor.executeScript("arguments[0].click();", element);
     }
 
     public void waitUntilPresenceOfElement(By elementLocator) {
