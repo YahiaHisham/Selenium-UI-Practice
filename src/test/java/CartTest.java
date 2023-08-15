@@ -8,7 +8,7 @@ public class CartTest extends TestBase {
         new HomePage(driver)
                 .clickOnProductsButton();
         new ProductsListingPage(driver)
-                .hoverOverProductAndAddToCart(1)
+                .hoverOverProductAndAddToCart(0)
                 .clickOnContinueShoppingButton()
                 .hoverOverProductAndAddToCart(2)
                 .clickOnViewCartButton();

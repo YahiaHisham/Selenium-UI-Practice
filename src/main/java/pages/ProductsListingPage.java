@@ -12,7 +12,7 @@ public class ProductsListingPage extends PageBase {
     private static final By searchBox = By.id("search_product");
     private static final By searchButton = By.id("submit_search");
     private static final By searchedProductsName = By.cssSelector("div.productinfo > p");
-    private static final By addToCartButtons = By.cssSelector("add-to-cart");
+    private static final By addToCartButtons = By.cssSelector(".add-to-cart");
     private static final By continueShoppingButton = By.cssSelector(".btn-success");
     private static final By viewCartButton = By.cssSelector("p.text-center > a");
 
@@ -29,20 +29,24 @@ public class ProductsListingPage extends PageBase {
         setElementText(searchBox, searchText);
         return this;
     }
+
     public ProductsListingPage clickOnSearchButton() {
         clickOnElement(searchButton);
         return this;
     }
+
     public ProductsListingPage clickOnContinueShoppingButton() {
         clickOnElement(continueShoppingButton);
         return this;
     }
+
     public void clickOnViewCartButton() {
         clickOnElement(viewCartButton);
     }
+
     public ProductsListingPage hoverOverProductAndAddToCart(int index) {
-        hoverOverElement(addToCartButtons);
-        clickOnElement(addToCartButtons);
+        hoverOverElement(addToCartButtons,index);
+        forceClickUsingJavaScript(addToCartButtons,index);
         return this;
     }
 
@@ -54,6 +58,7 @@ public class ProductsListingPage extends PageBase {
         Assert.assertEquals(driver.getTitle(), "Automation Exercise - All Products");
         return this;
     }
+
     public void assertThatAllResultsAreRelatedToSearchQuery() {
         String searchText = driver.findElement(searchBox).getText();
         List<WebElement> productElements = driver.findElements(searchedProductsName);
