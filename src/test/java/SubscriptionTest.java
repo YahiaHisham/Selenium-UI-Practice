@@ -3,6 +3,7 @@ import pages.CartPage;
 import pages.HomePage;
 
 public class SubscriptionTest extends TestBase {
+
     @Test
     public void assertThatUserCanSubscribeForUpdatesFromHomePage() {
         new HomePage(driver)
@@ -10,6 +11,7 @@ public class SubscriptionTest extends TestBase {
                 .clickOnSubscribeButton()
                 .assertThatUserIsSubscribedSuccessfully();
     }
+
     @Test
     public void assertThatUserCanSubscribeForUpdatesFromCartPage() {
         new HomePage(driver)
@@ -19,4 +21,5 @@ public class SubscriptionTest extends TestBase {
                 .clickOnSubscribeButton()
                 .assertThatUserIsSubscribedSuccessfully();
     }
+
 }

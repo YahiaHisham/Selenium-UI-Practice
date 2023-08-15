@@ -34,6 +34,7 @@ public class ProductsListingPage extends PageBase {
         clickOnElement(searchButton);
         return this;
     }
+
     public ProductDetailsPage productDetailsPage() {
         return new ProductDetailsPage(driver);
     }
