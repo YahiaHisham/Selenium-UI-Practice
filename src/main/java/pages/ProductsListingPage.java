@@ -34,22 +34,6 @@ public class ProductsListingPage extends PageBase {
         clickOnElement(searchButton);
         return this;
     }
-
-    public ProductsListingPage clickOnContinueShoppingButton() {
-        clickOnElement(continueShoppingButton);
-        return this;
-    }
-
-    public void clickOnViewCartButton() {
-        clickOnElement(viewCartButton);
-    }
-
-    public ProductsListingPage hoverOverProductAndAddToCart(int index) {
-        hoverOverElement(addToCartButtons,index);
-        forceClickUsingJavaScript(addToCartButtons,index);
-        return this;
-    }
-
     public ProductDetailsPage productDetailsPage() {
         return new ProductDetailsPage(driver);
     }
