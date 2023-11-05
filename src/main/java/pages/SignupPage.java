@@ -1,13 +1,12 @@
 package pages;
 
-import data.JsonReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class SignupPage extends PageBase {
-    private static final By mrTitleRadioBtn = By.id("id_gender1");
+    private static final By mrTitleRadioButton = By.id("id_gender1");
     private static final By passwordField = By.id("password");
     private static final By dayOfBirthDropDown = By.id("days");
     private static final By monthOfBirthDropDown = By.id("months");
@@ -20,104 +19,102 @@ public class SignupPage extends PageBase {
     private static final By cityField = By.id("city");
     private static final By zipCodeField = By.id("zipcode");
     private static final By mobileNumberField = By.id("mobile_number");
-    private static final By createAccountBtn = By.xpath("//button[text()='Create Account']");
-    private static final By continueBtn = By.xpath("//a[@data-qa='continue-button']");
+    private static final By createAccountButton = By.xpath("//button[text()='Create Account']");
+    private static final By continueButton = By.xpath("//a[@data-qa='continue-button']");
 
     public SignupPage(WebDriver driver) {
         super(driver);
     }
 
     public SignupPage setTitleToMr() {
-        clickOnElement(mrTitleRadioBtn);
+        clickOnElement(mrTitleRadioButton);
         return this;
     }
 
-    public SignupPage setPassword() {
-        String password = generateRandomText(5) + generateRandomNumbers(4);
+    public SignupPage setPassword(String password) {
         setElementText(passwordField, password);
-        JsonReader.updateValueInJsonFile("password", password, "RegisteredUserData");
         return this;
     }
 
-    public SignupPage setDayOfBirth() {
+    public SignupPage setDayOfBirth(String day) {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(dayOfBirthDropDown));
         // Select an option by its index
-        dropdown.selectByIndex(Integer.parseInt(generateRandomNumbers(1)));
+        dropdown.selectByIndex(Integer.parseInt(day));
         return this;
     }
 
-    public SignupPage setMonthOfBirth() {
+    public SignupPage setMonthOfBirth(String month) {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(monthOfBirthDropDown));
         // Select an option by its index
-        dropdown.selectByIndex(Integer.parseInt(generateRandomNumbers(1)));
+        dropdown.selectByIndex(Integer.parseInt(month));
         return this;
     }
 
-    public SignupPage setYearOfBirth() {
+    public SignupPage setYearOfBirth(String year) {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(yearOfBirthDropDown));
         // Select an option by its index
-        dropdown.selectByIndex(Integer.parseInt(generateRandomNumbers(2)));
+        dropdown.selectByIndex(Integer.parseInt(year));
         return this;
     }
 
-    public SignupPage setFirstName() {
-        setElementText(firstNameField, generateRandomText(6));
+    public SignupPage setFirstName(String name) {
+        setElementText(firstNameField, name);
         return this;
     }
 
-    public SignupPage setLastName() {
-        setElementText(lastNameField, generateRandomText(6));
+    public SignupPage setLastName(String name) {
+        setElementText(lastNameField, name);
         return this;
     }
 
-    public SignupPage setAddress() {
-        setElementText(addressField, generateRandomText(10) + generateRandomNumbers(4));
+    public SignupPage setAddress(String address) {
+        setElementText(addressField, address);
         return this;
     }
 
-    public SignupPage setCountry() {
+    public SignupPage setCountry(String country) {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(countryDropDown));
         // Select an option by its index
-        dropdown.selectByIndex(1);
+        dropdown.selectByIndex(Integer.parseInt(country));
         return this;
     }
 
-    public SignupPage setState() {
-        setElementText(stateField, generateRandomText(5) + generateRandomNumbers(1));
+    public SignupPage setState(String state) {
+        setElementText(stateField, state);
         return this;
     }
 
-    public SignupPage setCity() {
-        setElementText(cityField, generateRandomText(8));
+    public SignupPage setCity(String city) {
+        setElementText(cityField, city);
         return this;
     }
 
-    public SignupPage setZipCode() {
-        setElementText(zipCodeField, generateRandomNumbers(6));
+    public SignupPage setZipCode(String zipCode) {
+        setElementText(zipCodeField, zipCode);
         return this;
     }
 
-    public SignupPage setMobileNumber() {
-        setElementText(mobileNumberField, "01" + generateRandomNumbers(9));
+    public SignupPage setMobileNumber(String mobileNumber) {
+        setElementText(mobileNumberField, mobileNumber);
         return this;
     }
 
     public SignupPage clickOnSignUpButton() {
-        clickOnElement(createAccountBtn);
+        clickOnElement(createAccountButton);
         return this;
     }
 
-    public SignupPage assertThatAccountCreatedSuccessfully() {
-        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Account Created");
+    public SignupPage assertThatAccountCreatedSuccessfully(String message) {
+        Assert.assertEquals(driver.getTitle(), message);
         return this;
     }
 
     public SignupPage clickOnContinueButton() {
-        clickOnElement(continueBtn);
+        clickOnElement(continueButton);
         return this;
     }
 

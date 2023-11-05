@@ -1,4 +1,4 @@
-package data;
+package utilities;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -9,8 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class JsonReader {
-    static String classLocation = "/src/main/java/data/";
-    static String fileExtension = ".JSON";
+    static String classLocation = "/src/test/java/data/jsonFiles";
+    static String fileExtension = ".json";
     static String projectLocation = "user.dir";
 
     private static String filePath;

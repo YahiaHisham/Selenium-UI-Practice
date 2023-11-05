@@ -13,8 +13,8 @@ public class CartPage extends PageBase {
         super(driver);
     }
 
-    public CartPage enterSubscriptionEmail() {
-        setElementText(emailSubscriptionField, generateRandomText(6) + "@mail.com");
+    public CartPage enterSubscriptionEmail(String email) {
+        setElementText(emailSubscriptionField, email);
         return this;
     }
 
@@ -23,7 +23,7 @@ public class CartPage extends PageBase {
         return this;
     }
 
-    public void assertThatUserIsSubscribedSuccessfully() {
-        Assert.assertEquals(driver.findElement(successSubscriptionAlert).getText(), "You have been successfully subscribed");
+    public void assertThatUserIsSubscribedSuccessfully(String successSubscriptionMessage) {
+        Assert.assertEquals(driver.findElement(successSubscriptionAlert).getText(), successSubscriptionMessage);
     }
 }

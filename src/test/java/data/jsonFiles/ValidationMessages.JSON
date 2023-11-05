@@ -1,0 +1,14 @@
+[
+  {
+    "loginPageLabel": "Automation Exercise - Signup / Login",
+    "contactUsPageLabel": "Automation Exercise - Contact Us",
+    "productsPageLabel": "Automation Exercise - All Products",
+    "testCasesPageLabel": "Automation Practice Website for UI Testing - Test Cases",
+    "accountCreatedPageLabel": "Automation Exercise - Account Created",
+    "successSubscriptionMessage": "You have been successfully subscribed",
+    "messageSubmittedSuccessfullyMessage": "Success! Your details have been submitted successfully.",
+    "accountDeletedMessage": "ACCOUNT DELETED!",
+    "invalidCredentialsMessage": "Your email or password is incorrect!",
+    "emailAlreadyRegisteredMessage": "Email Address already exist!"
+  }
+]

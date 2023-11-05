@@ -1,5 +1,8 @@
+package testClasses;
+
 import org.testng.annotations.Test;
 import pages.HomePage;
+import utilities.JsonReader;
 
 public class ProductsTest extends TestBase {
     @Test
@@ -7,7 +10,7 @@ public class ProductsTest extends TestBase {
         new HomePage(driver)
                 .clickOnProductsButton()
                 .productsListingPage()
-                .assertThatAllProductsPageDisplayed()
+                .assertThatAllProductsPageDisplayed(JsonReader.getValueFromJsonFile("productsPageLabel","ValidationMessages"))
                 .clickOnViewProductButton()
                 .productDetailsPage()
                 .assertThatProductNameDisplayed()
@@ -22,7 +25,7 @@ public class ProductsTest extends TestBase {
         new HomePage(driver)
                 .clickOnProductsButton()
                 .productsListingPage()
-                .assertThatAllProductsPageDisplayed()
+                .assertThatAllProductsPageDisplayed(JsonReader.getValueFromJsonFile("productsPageLabel","ValidationMessages"))
                 .searchForProduct("top")
                 .clickOnSearchButton()
                 .assertThatAllResultsAreRelatedToSearchQuery();
