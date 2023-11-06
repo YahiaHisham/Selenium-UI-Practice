@@ -78,8 +78,8 @@ public class SignupPage extends PageBase {
     public SignupPage setCountry(String country) {
         // Create a Select object
         Select dropdown = new Select(driver.findElement(countryDropDown));
-        // Select an option by its index
-        dropdown.selectByIndex(Integer.parseInt(country));
+        // Select an option by its value
+        dropdown.selectByValue(country);
         return this;
     }
 

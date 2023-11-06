@@ -13,9 +13,9 @@ public class UserRegistrationTest extends TestBase {
         String name = generateRandomText(8) + " " + generateRandomText(5);
         String email = generateRandomText(8) + "@email.com";
         String password = generateRandomText(5) + generateRandomNumbers(4);
-//        JsonReader.updateValueInJsonFile("name", name, "RegisteredUserData");
-//        JsonReader.updateValueInJsonFile("email", email, "RegisteredUserData");
-//        JsonReader.updateValueInJsonFile("password", password, "RegisteredUserData");
+        JsonReader.updateValueInJsonFile("name", name, "RegisteredUserData");
+        JsonReader.updateValueInJsonFile("email", email, "RegisteredUserData");
+        JsonReader.updateValueInJsonFile("password", password, "RegisteredUserData");
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()
                 .setSignupName(name)
@@ -30,7 +30,7 @@ public class UserRegistrationTest extends TestBase {
                 .setFirstName(generateRandomText(6))
                 .setLastName(generateRandomText(6))
                 .setAddress(generateRandomText(10) + " " + generateRandomNumbers(4))
-                .setCountry(generateRandomNumbers(1))
+                .setCountry("Canada")
                 .setState(generateRandomText(5))
                 .setCity(generateRandomText(5))
                 .setZipCode(generateRandomNumbers(6))
@@ -49,9 +49,9 @@ public class UserRegistrationTest extends TestBase {
         String name = generateRandomText(8) + " " + generateRandomText(5);
         String email = generateRandomText(8) + "@email.com";
         String password = generateRandomText(5) + generateRandomNumbers(4);
-//        JsonReader.updateValueInJsonFile("nameE2E", name, "RegisteredUserData");
-//        JsonReader.updateValueInJsonFile("emailE2E", email, "RegisteredUserData");
-//        JsonReader.updateValueInJsonFile("password", password, "RegisteredUserData");
+        JsonReader.updateValueInJsonFile("nameE2E", name, "RegisteredUserData");
+        JsonReader.updateValueInJsonFile("emailE2E", email, "RegisteredUserData");
+        JsonReader.updateValueInJsonFile("password", password, "RegisteredUserData");
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()
                 .setSignupNameE2E(name)
@@ -66,7 +66,7 @@ public class UserRegistrationTest extends TestBase {
                 .setFirstName(generateRandomText(6))
                 .setLastName(generateRandomText(6))
                 .setAddress(generateRandomText(10) + " " + generateRandomNumbers(4))
-                .setCountry(generateRandomNumbers(1))
+                .setCountry("Canada")
                 .setState(generateRandomText(5))
                 .setCity(generateRandomText(5))
                 .setZipCode(generateRandomNumbers(6))
@@ -74,7 +74,7 @@ public class UserRegistrationTest extends TestBase {
                 .clickOnSignUpButton()
                 .assertThatAccountCreatedSuccessfully(JsonReader.getValueFromJsonFile("accountCreatedPageLabel", "ValidationMessages"))
                 .clickOnContinueButton()
-                .clickOnCloseAd()
+//                .clickOnCloseAd()
                 .homePage()
                 .assertThatUserIsLoggedInSuccessfully(JsonReader.getValueFromJsonFile("nameE2E", "RegisteredUserData"))
                 .clickOnDeleteButton()

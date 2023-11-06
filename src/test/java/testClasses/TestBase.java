@@ -28,7 +28,7 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
+//        driver.switchTo().window(tabs.get(1));
         Thread.sleep(9000);
 //        driver.close();
         driver.switchTo().window(tabs.get(0));
