@@ -12,7 +12,7 @@ public class ContactUsPage extends PageBase {
     private static final By messageField = By.name("message");
     private static final By uploadButton = By.name("upload_file");
     private static final By submitButton = By.name("submit");
-    private static final By successMessage = By.cssSelector("div.status");
+    private static final By successMessageField = By.cssSelector("div.status");
 
     public ContactUsPage(WebDriver driver) {
         super(driver);
@@ -70,6 +70,6 @@ public class ContactUsPage extends PageBase {
     }
 
     public void assertThatUsersMessageSubmittedSuccessfully(String successMessage) {
-        Assert.assertEquals(driver.findElement(ContactUsPage.successMessage).getText(), successMessage);
+        Assert.assertEquals(driver.findElement(successMessageField).getText(), successMessage);
     }
 }
