@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class HomePage extends PageBase {
-    //TODO replace Btn with Button in locators names
+
     private static final By deleteAccountButton = By.xpath("//a[text()=' Delete Account']");
     private static final By accountDeletionSuccessMessage = By.xpath("//h2[@data-qa='account-deleted']");
     private static final By loggedUserNameLabel = By.xpath("//a[.//i[@class='fa fa-user']]");
@@ -61,8 +61,8 @@ public class HomePage extends PageBase {
         return this;
     }
 
-    public void assertThatAccountDeletedSuccessfully(String accountDeletedMessage) {
-        Assert.assertEquals(driver.findElement(accountDeletionSuccessMessage).getText(), accountDeletedMessage);
+    public void assertThatAccountDeletedSuccessfully(String message) {
+        Assert.assertEquals(driver.findElement(accountDeletionSuccessMessage).getText(), message);
     }
 
     public HomePage assertThatUserIsLoggedInSuccessfully(String loggedUserName) {
@@ -74,8 +74,8 @@ public class HomePage extends PageBase {
         Assert.assertEquals(driver.getTitle(), loginPageLabel);
     }
 
-    public void assertThatUserIsSubscribedSuccessfully(String successSubscriptionMessage) {
-        Assert.assertEquals(driver.findElement(successSubscriptionAlert).getText(), successSubscriptionMessage);
+    public void assertThatUserIsSubscribedSuccessfully(String message) {
+        Assert.assertEquals(driver.findElement(successSubscriptionAlert).getText(), message);
     }
 
     public ContactUsPage contactUsPage() {
