@@ -13,6 +13,7 @@ public class CartPage extends PageBase {
         super(driver);
     }
 
+
     public CartPage enterSubscriptionEmail(String email) {
         setElementText(emailSubscriptionField, email);
         return this;
