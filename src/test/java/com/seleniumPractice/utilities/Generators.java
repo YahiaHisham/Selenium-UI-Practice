@@ -1,4 +1,4 @@
-package utilities;
+package com.seleniumPractice.utilities;
 
 import java.util.Random;
 

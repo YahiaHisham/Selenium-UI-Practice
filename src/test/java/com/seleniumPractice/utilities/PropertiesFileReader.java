@@ -1,4 +1,4 @@
-package utilities;
+package com.seleniumPractice.utilities;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

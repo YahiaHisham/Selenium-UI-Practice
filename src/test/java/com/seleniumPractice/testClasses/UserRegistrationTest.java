@@ -1,11 +1,12 @@
-package testClasses;
+package com.seleniumPractice.testClasses;
 
+import com.seleniumPractice.testClasses.common.TestBase;
 import org.testng.annotations.Test;
 import pages.SignupLoginPage;
-import utilities.JsonReader;
+import com.seleniumPractice.utilities.JsonReader;
 
-import static utilities.Generators.generateRandomNumbers;
-import static utilities.Generators.generateRandomText;
+import static com.seleniumPractice.utilities.Generators.generateRandomNumbers;
+import static com.seleniumPractice.utilities.Generators.generateRandomText;
 
 public class UserRegistrationTest extends TestBase {
     @Test

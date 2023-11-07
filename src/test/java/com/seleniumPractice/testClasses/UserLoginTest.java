@@ -1,13 +1,14 @@
-package testClasses;
+package com.seleniumPractice.testClasses;
 
+import com.seleniumPractice.testClasses.common.TestBase;
 import org.testng.annotations.Test;
 import pages.SignupLoginPage;
-import utilities.JsonReader;
+import com.seleniumPractice.utilities.JsonReader;
 
-import static utilities.Generators.generateRandomText;
+import static com.seleniumPractice.utilities.Generators.generateRandomText;
 
 public class UserLoginTest extends TestBase {
-    @Test(dependsOnMethods = {"UserRegistrationTest.verifyThatUserCanRegisterSuccessfullyE2E"})
+    @Test(dependsOnMethods = {"com.seleniumPractice.testClasses.UserRegistrationTest.verifyThatUserCanRegisterSuccessfullyE2E"})
     public void verifyThatUserCanLoginWithValidCredentials() {
         new SignupLoginPage(driver)
                 .clickOnSignupLoginButton()

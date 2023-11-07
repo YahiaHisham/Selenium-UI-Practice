@@ -1,4 +1,4 @@
-package utilities;
+package com.seleniumPractice.utilities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class JsonReader {
-    static String classLocation = "/src/test/java/data/jsonFiles/";
+    static String classLocation = "/src/test/java/com/seleniumPractice/data/jsonFiles/";
     static String fileExtension = ".json";
     static String projectLocation = "user.dir";
     static String greenBoldColor = "\u001B[32;1m";

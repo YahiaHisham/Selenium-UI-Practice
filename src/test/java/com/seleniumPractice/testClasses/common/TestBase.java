@@ -1,4 +1,4 @@
-package testClasses;
+package com.seleniumPractice.testClasses.common;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,6 +32,7 @@ public class TestBase {
         Thread.sleep(9000);
 //        driver.close();
         driver.switchTo().window(tabs.get(0));
+        driver.navigate().refresh();
     }
 
     @AfterMethod

@@ -1,8 +1,9 @@
-package testClasses;
+package com.seleniumPractice.testClasses;
 
+import com.seleniumPractice.testClasses.common.TestBase;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import utilities.JsonReader;
+import com.seleniumPractice.utilities.JsonReader;
 
 public class TestCasesTest extends TestBase {
     @Test

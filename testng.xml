@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="FullTestSuite">
+    <test name="RegressionTest" parallel="methods" thread-count="2">
+        <!--        groups and run tags are for specifying special TCs to only run like
+         regression or smoke or any other thing, if you want ti disable it, just comment it,
+         and it will run all classes-->
+        <!--        <groups>-->
+        <!--            <run>-->
+        <!--                <include name="login"/>-->
+        <!--            </run>-->
+        <!--        </groups>-->
+        <classes>
+            <class name="com.seleniumPractice.testClasses.UserRegistrationTest"/>
+            <class name="com.seleniumPractice.testClasses.UserLoginTest"/>
+            <class name="com.seleniumPractice.testClasses.TestCasesTest"/>
+            <class name="com.seleniumPractice.testClasses.SubscriptionTest"/>
+            <class name="com.seleniumPractice.testClasses.ProductsTest"/>
+            <class name="com.seleniumPractice.testClasses.ContactUsTest"/>
+<!--            <class name="com.seleniumPractice.testClasses.CartTest"/>-->
+        </classes>
+    </test>
+</suite>
+
