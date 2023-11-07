@@ -74,7 +74,6 @@ public class UserRegistrationTest extends TestBase {
                 .clickOnSignUpButton()
                 .assertThatAccountCreatedSuccessfully(JsonReader.getValueFromJsonFile("accountCreatedPageLabel", "ValidationMessages"))
                 .clickOnContinueButton()
-//                .clickOnCloseAd()
                 .homePage()
                 .assertThatUserIsLoggedInSuccessfully(JsonReader.getValueFromJsonFile("nameE2E", "RegisteredUserData"))
                 .clickOnDeleteButton()
