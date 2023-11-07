@@ -9,35 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Random;
 
 public class PageBase {
     WebDriver driver;
 
     public PageBase(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public static String generateRandomText(int length) {
-        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        StringBuilder sb = new StringBuilder();
-        Random random = new Random();
-        for (int i = 0; i < length; i++) {
-            char c = alphabet.charAt(random.nextInt(alphabet.length()));
-            sb.append(c);
-        }
-        return sb.toString();
-    }
-
-    public static String generateRandomNumbers(int length) {
-        String digits = "0123456789";
-        StringBuilder sb = new StringBuilder();
-        Random random = new Random();
-        for (int i = 0; i < length; i++) {
-            char c = digits.charAt(random.nextInt(digits.length()));
-            sb.append(c);
-        }
-        return sb.toString();
     }
 
     public void clickOnElement(By elementLocator) {
@@ -62,6 +39,10 @@ public class PageBase {
         waitUntilPresenceOfElement(elementLocator, index);
         scrollToElementView(elementLocator, index);
         driver.findElements(elementLocator).get(index).sendKeys(text);
+    }
+
+    public void uploadFile(By elementLocator, String fileName) {
+        driver.findElement(elementLocator).sendKeys(System.getProperty("user.dir") + "/src/test/java/data" + fileName);
     }
 
     public void forceClickUsingJavaScript(By elementLocator) {

@@ -1,20 +1,19 @@
 package pages;
 
-import data.JsonReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class HomePage extends PageBase {
-    //TODO replace Btn with Button in locators names
+
     private static final By deleteAccountButton = By.xpath("//a[text()=' Delete Account']");
-    private static final By accountDeletionSuccessMsg = By.xpath("//h2[@data-qa='account-deleted']");
-    private static final By loggedUserName = By.xpath("//a[.//i[@class='fa fa-user']]");
-    private static final By contactUsBtn = By.cssSelector("i.fa-envelope");
-    private static final By testCasesBtn = By.xpath("//a[contains(text(),'Test Cases')]");
-    private static final By productsBtn = By.cssSelector("i.card_travel");
-    private static final By cartBtn = By.cssSelector("fa-shopping-cart");
-    private static final By logoutBtn = By.cssSelector("i.fa-lock");
+    private static final By accountDeletionSuccessMessage = By.xpath("//h2[@data-qa='account-deleted']");
+    private static final By loggedUserNameLabel = By.xpath("//a[.//i[@class='fa fa-user']]");
+    private static final By contactUsButton = By.cssSelector("i.fa-envelope");
+    private static final By testCasesButton = By.xpath("//a[contains(text(),'Test Cases')]");
+    private static final By productsButton = By.cssSelector("i.card_travel");
+    private static final By cartButton = By.cssSelector("fa-shopping-cart");
+    private static final By logoutButton = By.cssSelector("i.fa-lock");
     private static final By emailSubscriptionField = By.id("susbscribe_email");
     private static final By subscribeButton = By.id("subscribe");
     private static final By successSubscriptionAlert = By.cssSelector("alert-success");
@@ -24,7 +23,7 @@ public class HomePage extends PageBase {
     }
 
     public HomePage clickOnProductsButton() {
-        clickOnElement(productsBtn);
+        clickOnElement(productsButton);
         return this;
     }
 
@@ -34,26 +33,26 @@ public class HomePage extends PageBase {
     }
 
     public HomePage clickOnLogoutButton() {
-        clickOnElement(logoutBtn);
+        clickOnElement(logoutButton);
         return this;
     }
 
     public HomePage clickOnContactUsButton() {
-        clickOnElement(contactUsBtn);
+        clickOnElement(contactUsButton);
         return this;
     }
 
     public HomePage clickOnTestCasesButton() {
-        clickOnElement(testCasesBtn);
-        return this;
-    }
-    public HomePage clickOnCartButton() {
-        clickOnElement(cartBtn);
+        clickOnElement(testCasesButton);
         return this;
     }
 
-    public HomePage enterSubscriptionEmail() {
-        setElementText(emailSubscriptionField, generateRandomText(6) + "@mail.com");
+    public void clickOnCartButton() {
+        clickOnElement(cartButton);
+    }
+
+    public HomePage enterSubscriptionEmail(String email) {
+        setElementText(emailSubscriptionField, email);
         return this;
     }
 
@@ -62,21 +61,21 @@ public class HomePage extends PageBase {
         return this;
     }
 
-    public void assertThatAccountDeletedSuccessfully() {
-        Assert.assertEquals(driver.findElement(accountDeletionSuccessMsg).getText(), "ACCOUNT DELETED!");
+    public void assertThatAccountDeletedSuccessfully(String message) {
+        Assert.assertEquals(driver.findElement(accountDeletionSuccessMessage).getText(), message);
     }
 
-    public HomePage assertThatUserIsLoggedInSuccessfully() {
-        Assert.assertEquals(driver.findElement(loggedUserName).getText(), "Logged in as " + JsonReader.getValueFromJsonFile("nameE2E", "RegisteredUserData"));
+    public HomePage assertThatUserIsLoggedInSuccessfully(String loggedUserName) {
+        Assert.assertEquals(driver.findElement(loggedUserNameLabel).getText(), "Logged in as " + loggedUserName);
         return this;
     }
 
-    public void assertThatUserIsLoggedOutSuccessfully() {
-        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Signup / Login");
+    public void assertThatUserIsLoggedOutSuccessfully(String loginPageLabel) {
+        Assert.assertEquals(driver.getTitle(), loginPageLabel);
     }
 
-    public void assertThatUserIsSubscribedSuccessfully() {
-        Assert.assertEquals(driver.findElement(successSubscriptionAlert).getText(), "You have been successfully subscribed");
+    public void assertThatUserIsSubscribedSuccessfully(String message) {
+        Assert.assertEquals(driver.findElement(successSubscriptionAlert).getText(), message);
     }
 
     public ContactUsPage contactUsPage() {

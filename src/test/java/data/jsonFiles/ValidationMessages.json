@@ -1,0 +1,13 @@
+{
+  "accountCreatedPageLabel" : "Automation Exercise - Account Created",
+  "testCasesPageLabel" : "Automation Practice Website for UI Testing - Test Cases",
+  "successSubscriptionMessage" : "You have been successfully subscribed",
+  "newName" : "YAhia Hisham two three",
+  "invalidCredentialsMessage" : "Your email or password is incorrect!",
+  "accountDeletedMessage" : "ACCOUNT DELETED!",
+  "productsPageLabel" : "Automation Exercise - All Products",
+  "messageSubmittedSuccessfullyMessage" : "Success! Your details have been submitted successfully.",
+  "emailAlreadyRegisteredMessage" : "Email Address already exist!",
+  "loginPageLabel" : "Automation Exercise - Signup / Login",
+  "contactUsPageLabel" : "Automation Exercise - Contact Us"
+}

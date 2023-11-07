@@ -8,11 +8,11 @@ import org.testng.Assert;
 import java.util.List;
 
 public class ProductsListingPage extends PageBase {
-    private static final By viewProductBtn = By.cssSelector("ul.nav-justified");
+    private static final By viewProductButton = By.cssSelector("ul.nav-justified");
     private static final By searchBox = By.id("search_product");
     private static final By searchButton = By.id("submit_search");
     private static final By searchedProductsName = By.cssSelector("div.productinfo > p");
-    private static final By addToCartButtons = By.cssSelector(".add-to-cart");
+    private static final By addToCartButton = By.cssSelector(".add-to-cart");
     private static final By continueShoppingButton = By.cssSelector(".btn-success");
     private static final By viewCartButton = By.cssSelector("p.text-center > a");
 
@@ -21,7 +21,7 @@ public class ProductsListingPage extends PageBase {
     }
 
     public ProductsListingPage clickOnViewProductButton() {
-        driver.findElements(viewProductBtn).get(0).click();
+        driver.findElements(viewProductButton).get(0).click();
         return this;
     }
 
@@ -39,8 +39,8 @@ public class ProductsListingPage extends PageBase {
         return new ProductDetailsPage(driver);
     }
 
-    public ProductsListingPage assertThatAllProductsPageDisplayed() {
-        Assert.assertEquals(driver.getTitle(), "Automation Exercise - All Products");
+    public ProductsListingPage assertThatAllProductsPageDisplayed(String productsPageLabel) {
+        Assert.assertEquals(driver.getTitle(), productsPageLabel);
         return this;
     }
 

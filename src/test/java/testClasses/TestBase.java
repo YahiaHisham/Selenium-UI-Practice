@@ -1,3 +1,5 @@
+package testClasses;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,7 +20,7 @@ public class TestBase {
      * AdBlock extension and continues the execution flow normally
      */
     @BeforeMethod
-    public void startBrowser() {
+    public void startBrowser() throws InterruptedException {
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("./src/test/resources/chromeExtensions/AdBlock.crx"));
         driver = new ChromeDriver(options);
@@ -26,8 +28,9 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
-        driver.close();
+//        driver.switchTo().window(tabs.get(1));
+        Thread.sleep(9000);
+//        driver.close();
         driver.switchTo().window(tabs.get(0));
     }
 
